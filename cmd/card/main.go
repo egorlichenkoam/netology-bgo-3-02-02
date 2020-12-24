@@ -47,4 +47,5 @@ func main() {
 	card.AddTransaction(master, transaction)
 	fmt.Println(card.SumByMcc(master.Transactions, []card.Mcc{"5411", "0000"}))
 	fmt.Println(card.TranslateMcc(transaction.Mcc))
+	fmt.Println(card.LastNTransactions(master, 2))
 }

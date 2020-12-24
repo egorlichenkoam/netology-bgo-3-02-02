@@ -47,3 +47,17 @@ func TranslateMcc(code Mcc) string {
 	}
 	return result
 }
+
+func LastNTransactions(card *Card, n int) []Transaction {
+	if len(card.Transactions) < n {
+		n = len(card.Transactions)
+	}
+	nTransactions := make([]Transaction, n)
+	n = len(card.Transactions) - n
+	copy(nTransactions, card.Transactions[n:len(card.Transactions)])
+	for i := len(nTransactions)/2 - 1; i >= 0; i-- {
+		opp := len(nTransactions) - 1 - i
+		nTransactions[i], nTransactions[opp] = nTransactions[opp], nTransactions[i]
+	}
+	return nTransactions
+}
