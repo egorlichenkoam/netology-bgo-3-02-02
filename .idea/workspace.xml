@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="91b71f2e-1f1c-4d11-ae55-4ecb45b41db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/card/card.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/card/card.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,11 +110,36 @@
       <option name="project" value="LOCAL" />
       <updated>1609064545317</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="workspace">
+      <created>1609066762915</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609066762915</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="38" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="38" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
@@ -121,7 +147,8 @@
     <MESSAGE value="Translate mcc" />
     <MESSAGE value="Last n transactions" />
     <MESSAGE value="Last n transactions (response to teacher)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last n transactions (response to teacher)" />
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

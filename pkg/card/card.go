@@ -12,6 +12,14 @@ type Card struct {
 	Transactions []Transaction
 }
 
+type Service struct {
+	Cards []*Card
+}
+
+func NewService() *Service {
+	return &Service{}
+}
+
 func AddTransaction(card *Card, transaction *Transaction) {
 	if transaction != nil {
 		card.Transactions = append(card.Transactions, *transaction)
