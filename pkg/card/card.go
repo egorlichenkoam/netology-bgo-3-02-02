@@ -38,3 +38,39 @@ func filterTransactionsByMcc(transactions []Transaction, mccs []Mcc) []Transacti
 	}
 	return result
 }
+
+func TranslateMcc(code Mcc) string {
+	result := "Категория не указана"
+	value, ok := Mccs()[code]
+	if ok {
+		result = value
+	}
+	return result
+}
+
+func LastNTransactions(card *Card, n int) []Transaction {
+	if len(card.Transactions) < n {
+		n = len(card.Transactions)
+	}
+	nTransactions := make([]Transaction, n)
+	n = len(card.Transactions) - n
+	copy(nTransactions, card.Transactions[n:len(card.Transactions)])
+	for i := len(nTransactions)/2 - 1; i >= 0; i-- {
+		flipIdx := len(nTransactions) - 1 - i
+		nTransactions[i], nTransactions[flipIdx] = nTransactions[flipIdx], nTransactions[i]
+	}
+	return nTransactions
+}
+
+func LastNTransactions2(card *Card, n int) []Transaction {
+	if len(card.Transactions) < n {
+		n = len(card.Transactions)
+	}
+	n = len(card.Transactions) - n
+	nTransactions := card.Transactions[n:len(card.Transactions)]
+	for i := len(nTransactions)/2 - 1; i >= 0; i-- {
+		flipIdx := len(nTransactions) - 1 - i
+		nTransactions[i], nTransactions[flipIdx] = nTransactions[flipIdx], nTransactions[i]
+	}
+	return nTransactions
+}
