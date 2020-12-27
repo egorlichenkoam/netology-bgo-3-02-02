@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91b71f2e-1f1c-4d11-ae55-4ecb45b41db7" name="Default Changelist" comment="">
+    <list default="true" id="91b71f2e-1f1c-4d11-ae55-4ecb45b41db7" name="Default Changelist" comment="Transfer service">
+      <change afterPath="$PROJECT_DIR$/pkg/transaction/transaction.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/transfer/transfer.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/card/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/card/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/card/card.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/card/card.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/card/mcc.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/transaction/mcc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/card/transaction.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +55,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pkg/money" />
+      <recent name="$PROJECT_DIR$/pkg/transaction/" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
@@ -109,11 +121,43 @@
       <option name="project" value="LOCAL" />
       <updated>1609064545317</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="workspace">
+      <created>1609066762915</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609066762915</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Cards service">
+      <created>1609067353422</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1609067353422</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="38" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="38" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
@@ -121,7 +165,10 @@
     <MESSAGE value="Translate mcc" />
     <MESSAGE value="Last n transactions" />
     <MESSAGE value="Last n transactions (response to teacher)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last n transactions (response to teacher)" />
+    <MESSAGE value="workspace" />
+    <MESSAGE value="Cards service" />
+    <MESSAGE value="Transfer service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transfer service" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
