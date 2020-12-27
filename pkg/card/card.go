@@ -56,8 +56,21 @@ func LastNTransactions(card *Card, n int) []Transaction {
 	n = len(card.Transactions) - n
 	copy(nTransactions, card.Transactions[n:len(card.Transactions)])
 	for i := len(nTransactions)/2 - 1; i >= 0; i-- {
-		opp := len(nTransactions) - 1 - i
-		nTransactions[i], nTransactions[opp] = nTransactions[opp], nTransactions[i]
+		flipIdx := len(nTransactions) - 1 - i
+		nTransactions[i], nTransactions[flipIdx] = nTransactions[flipIdx], nTransactions[i]
+	}
+	return nTransactions
+}
+
+func LastNTransactions2(card *Card, n int) []Transaction {
+	if len(card.Transactions) < n {
+		n = len(card.Transactions)
+	}
+	n = len(card.Transactions) - n
+	nTransactions := card.Transactions[n:len(card.Transactions)]
+	for i := len(nTransactions)/2 - 1; i >= 0; i-- {
+		flipIdx := len(nTransactions) - 1 - i
+		nTransactions[i], nTransactions[flipIdx] = nTransactions[flipIdx], nTransactions[i]
 	}
 	return nTransactions
 }
