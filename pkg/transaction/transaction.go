@@ -10,8 +10,8 @@ import (
 type Type int
 
 const (
-	FROM Type = iota
-	TO
+	From Type = iota
+	To
 )
 
 type Status string

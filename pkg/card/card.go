@@ -3,12 +3,13 @@ package card
 import (
 	"01/pkg/money"
 	"math/rand"
+	"strings"
 )
 
 type Currency string
 
 const (
-	RUB Currency = "RUB"
+	Rub Currency = "RUB"
 )
 
 type Card struct {
@@ -25,11 +26,14 @@ func (s *Service) NewCard(issuer string, balance money.Money, currency Currency,
 }
 
 type Service struct {
-	Cards []Card
+	IssuerId string
+	Cards    []Card
 }
 
 func NewService() *Service {
-	return &Service{}
+	return &Service{
+		IssuerId: "510621",
+	}
 }
 
 func (s *Service) Add(card Card) *Card {
@@ -38,10 +42,23 @@ func (s *Service) Add(card Card) *Card {
 }
 
 func (s *Service) ByNumber(number string) (card *Card) {
-	for i, c := range s.Cards {
-		if c.Number == number {
-			return &s.Cards[i]
+	card = nil
+	if s.isOurCard(number) {
+		for i, c := range s.Cards {
+			if c.Number == number {
+				card = &s.Cards[i]
+			}
+		}
+		if card == nil {
+			card = s.NewCard("", 0, Rub, number)
 		}
 	}
-	return nil
+	return
+}
+
+func (s *Service) isOurCard(number string) bool {
+	if strings.HasPrefix(number, "510621") {
+		return true
+	}
+	return false
 }

@@ -33,13 +33,13 @@ func TestService_Card2Card(t *testing.T) {
 	}
 	transferSvc := NewService(cardSvc, transactionSvc, inBank, toDifferentBank, betweenDifferentBank)
 
-	cardSvc.NewCard("BABANK", 10_000_00, card.RUB, "4018682190154150")
-	cardSvc.NewCard("BABANK", 5_000_00, card.RUB, "4105733741399564")
-	cardSvc.NewCard("BABANK", 15_000_00, card.RUB, "4922876603093402")
-	cardSvc.NewCard("BABANK", 30_000_00, card.RUB, "4084227961096153")
-	cardSvc.NewCard("BABANK", 55_000_00, card.RUB, "4879888487800649")
-	cardSvc.NewCard("BABANK", 10_500_00, card.RUB, "4772438185495983")
-	cardSvc.NewCard("BABANK", 10_900_00, card.RUB, "4409713590773955")
+	cardSvc.NewCard("BABANK", 10_000_00, card.Rub, "5106212190154150")
+	cardSvc.NewCard("BABANK", 5_000_00, card.Rub, "5106213741399564")
+	cardSvc.NewCard("BABANK", 15_000_00, card.Rub, "5106216603093402")
+	cardSvc.NewCard("BABANK", 30_000_00, card.Rub, "5106217961096153")
+	cardSvc.NewCard("BABANK", 55_000_00, card.Rub, "5106218487800649")
+	cardSvc.NewCard("BABANK", 10_500_00, card.Rub, "5106218185495983")
+	cardSvc.NewCard("BABANK", 10_900_00, card.Rub, "5106213590773955")
 
 	tests := []struct {
 		name      string
@@ -54,8 +54,8 @@ func TestService_Card2Card(t *testing.T) {
 				TransferSvc: transferSvc,
 			},
 			args: args{
-				from:   "4018682190154150",
-				to:     "4105733741399564",
+				from:   cardSvc.Cards[0].Number,
+				to:     cardSvc.Cards[1].Number,
 				amount: 1_000_00,
 			},
 			wantTotal: 1_000_00,
@@ -66,8 +66,8 @@ func TestService_Card2Card(t *testing.T) {
 				TransferSvc: transferSvc,
 			},
 			args: args{
-				from:   "4922876603093402",
-				to:     "4084227961096153",
+				from:   cardSvc.Cards[2].Number,
+				to:     cardSvc.Cards[3].Number,
 				amount: 20_000_00,
 			},
 			wantTotal: 20_000_00,
@@ -78,24 +78,24 @@ func TestService_Card2Card(t *testing.T) {
 				TransferSvc: transferSvc,
 			},
 			args: args{
-				from:   "4879888487800649",
+				from:   cardSvc.Cards[4].Number,
 				to:     "0000000000000000",
 				amount: 20_000_00,
 			},
 			wantTotal: 20_100_00,
-			wantError: nil,
+			wantError: ErrorCardToNotFound,
 		}, {
 			name: "Карта своего банка -> Карта чужого банка (денег недостаточно)",
 			fields: fields{
 				TransferSvc: transferSvc,
 			},
 			args: args{
-				from:   "4772438185495983",
+				from:   cardSvc.Cards[5].Number,
 				to:     "0000000000000000",
 				amount: 20_000_00,
 			},
 			wantTotal: 20_100_00,
-			wantError: ErrorNotEnoughMoney,
+			wantError: ErrorCardToNotFound,
 		}, {
 			name: "Карта чужого банка -> Карта своего банка",
 			fields: fields{
@@ -103,11 +103,11 @@ func TestService_Card2Card(t *testing.T) {
 			},
 			args: args{
 				from:   "0000000000000000",
-				to:     "4772438185495983",
+				to:     cardSvc.Cards[6].Number,
 				amount: 20_000_00,
 			},
 			wantTotal: 20_000_00,
-			wantError: nil,
+			wantError: ErrorCardFromNotFound,
 		}, {
 			name: "Карта чужого банка -> Карта чужого банка",
 			fields: fields{
@@ -119,7 +119,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_300_00,
-			wantError: nil,
+			wantError: ErrorCardFromNotFound,
 		},
 	}
 	for _, tt := range tests {

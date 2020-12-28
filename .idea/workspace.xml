@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91b71f2e-1f1c-4d11-ae55-4ecb45b41db7" name="Default Changelist" comment="Error not enough money">
+    <list default="true" id="91b71f2e-1f1c-4d11-ae55-4ecb45b41db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/card/card.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/card/card.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/transaction/transaction.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/transaction/transaction.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/transfer/transfer.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/transfer/transfer.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/transfer/transfer_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/transfer/transfer_test.go" afterDir="false" />
     </list>
@@ -147,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609087054033</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Error not enough money">
+      <created>1609174662361</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1609174662361</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
