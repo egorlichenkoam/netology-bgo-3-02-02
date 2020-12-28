@@ -46,7 +46,7 @@ func TestService_Card2Card(t *testing.T) {
 		fields    fields
 		args      args
 		wantTotal money.Money
-		wantOk    bool
+		wantError error
 	}{
 		{
 			name: "Карта своего банка -> Карта своего банка (денег достаточно)",
@@ -59,7 +59,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 1_000_00,
 			},
 			wantTotal: 1_000_00,
-			wantOk:    true,
+			wantError: nil,
 		}, {
 			name: "Карта своего банка -> Карта своего банка (денег недостаточно)",
 			fields: fields{
@@ -71,7 +71,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_000_00,
-			wantOk:    false,
+			wantError: ErrorNotEnoughMoney,
 		}, {
 			name: "Карта своего банка -> Карта чужого банка (денег достаточно)",
 			fields: fields{
@@ -83,7 +83,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_100_00,
-			wantOk:    true,
+			wantError: nil,
 		}, {
 			name: "Карта своего банка -> Карта чужого банка (денег недостаточно)",
 			fields: fields{
@@ -95,7 +95,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_100_00,
-			wantOk:    false,
+			wantError: ErrorNotEnoughMoney,
 		}, {
 			name: "Карта чужого банка -> Карта своего банка",
 			fields: fields{
@@ -107,7 +107,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_000_00,
-			wantOk:    true,
+			wantError: nil,
 		}, {
 			name: "Карта чужого банка -> Карта чужого банка",
 			fields: fields{
@@ -119,18 +119,18 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_300_00,
-			wantOk:    true,
+			wantError: nil,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotTotal, gotOk := transferSvc.Card2Card(tt.args.from, tt.args.to, tt.args.amount)
-			t.Log(gotTotal, tt.wantTotal, gotOk, tt.wantOk)
+			gotTotal, gotError := transferSvc.Card2Card(tt.args.from, tt.args.to, tt.args.amount)
+			t.Log(gotTotal, tt.wantTotal, gotError, tt.wantError)
 			if gotTotal != tt.wantTotal {
 				t.Errorf("Card2Card() gotTotal = %v, want %v", gotTotal, tt.wantTotal)
 			}
-			if gotOk != tt.wantOk {
-				t.Errorf("Card2Card() gotOk = %v, want %v", gotOk, tt.wantOk)
+			if gotError != tt.wantError {
+				t.Errorf("Card2Card() got = %v, want %v", gotError, tt.wantError)
 			}
 		})
 	}
