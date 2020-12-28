@@ -8,9 +8,10 @@ import (
 )
 
 var (
-	ErrorNotEnoughMoney   = errors.New("not enough money")
-	ErrorCardFromNotFound = errors.New("card 'from' not found")
-	ErrorCardToNotFound   = errors.New("card 'to' not found")
+	ErrorNotEnoughMoney    = errors.New("not enough money")
+	ErrorCardFromNotFound  = errors.New("card 'from' not found")
+	ErrorCardToNotFound    = errors.New("card 'to' not found")
+	ErrorCardNumberInvalid = errors.New("card number invalid")
 )
 
 type Commission struct {
@@ -38,6 +39,11 @@ func NewService(cardSvc *card.Service, transactionSvc *transaction.Service, inBa
 
 func (s *Service) Card2Card(from, to string, amount money.Money) (total money.Money, e error) {
 	e = nil
+	total = 0
+	if !s.CardSvc.CheckByLuna(from) || !s.CardSvc.CheckByLuna(to) {
+		e = ErrorCardNumberInvalid
+		return total, e
+	}
 	cardFrom := s.CardSvc.ByNumber(from)
 	cardTo := s.CardSvc.ByNumber(to)
 	total = s.total(amount, s.commission(cardFrom, cardTo))

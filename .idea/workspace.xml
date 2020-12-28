@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="91b71f2e-1f1c-4d11-ae55-4ecb45b41db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/card/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/card/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/card/card.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/card/card.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/transaction/transaction.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/transaction/transaction.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/transfer/transfer.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/transfer/transfer.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pkg/transfer/transfer_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/transfer/transfer_test.go" afterDir="false" />
     </list>
@@ -69,7 +69,7 @@
       <recent name="$PROJECT_DIR$/pkg/transaction/" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Test.go test 01">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="01" />
       <working_directory value="$PROJECT_DIR$" />
@@ -90,6 +90,22 @@
       <directory value="$PROJECT_DIR$/cmd/card" />
       <method v="2" />
     </configuration>
+    <configuration name="go test 01" type="GoTestRunConfiguration" factoryName="Go Test" nameIsGenerated="true">
+      <module name="01" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <parameters value="-v ./..." />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <package value="01" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.go build 01/cmd/card" />
+      <item itemvalue="Go Test.go test 01" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -156,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609174662361</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Error card 'from' not found, error card 'to' not found">
+      <created>1609177363238</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1609177363238</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,9 +214,26 @@
     <MESSAGE value="Cards service" />
     <MESSAGE value="Transfer service" />
     <MESSAGE value="Error not enough money" />
-    <option name="LAST_COMMIT_MESSAGE" value="Error not enough money" />
+    <MESSAGE value="Error card 'from' not found, error card 'to' not found" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error card 'from' not found, error card 'to' not found" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cmd/card/main.go</url>
+          <line>33</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="GoApplicationRunConfiguration">
+        <watch expression="(((sum % 10) - 10) * -1)" language="go" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
