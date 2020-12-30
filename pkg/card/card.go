@@ -65,28 +65,20 @@ func (s *Service) isOurCard(number string) bool {
 }
 
 func (s *Service) CheckByLuna(number string) bool {
-	number = strings.ReplaceAll(number, " ", "")
-	numberInString := strings.Split(number, "")
-	numberInNumders := make([]int, 0)
-	for s := range numberInString {
-		if n, e := strconv.Atoi(numberInString[s]); e == nil {
-			numberInNumders = append(numberInNumders, n)
+	numberInString := strings.Split(strings.ReplaceAll(number, " ", ""), "")
+	sum := 0
+	for idx := range numberInString {
+		if sn, e := strconv.Atoi(numberInString[idx]); e == nil {
+			if (idx+1)%2 > 0 {
+				sn = sn * 2
+				if sn > 9 {
+					sn = sn - 9
+				}
+			}
+			sum += sn
 		} else {
 			return false
 		}
 	}
-	sum := 0
-	for n := range numberInNumders {
-		if (n+1)%2 > 0 {
-			numberInNumders[n] = numberInNumders[n] * 2
-			if numberInNumders[n] > 9 {
-				numberInNumders[n] = numberInNumders[n] - 9
-			}
-		}
-		sum += numberInNumders[n]
-	}
-	if (((sum % 10) - 10) * -1) == 10 {
-		return true
-	}
-	return false
+	return sum%10 == 0
 }
