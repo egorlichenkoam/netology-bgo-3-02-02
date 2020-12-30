@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	cardSvc := card.NewService()
+	cardSvc := card.NewService("510621")
 	transactionSvc := transaction.NewService()
 	inBank := transfer.Commission{
 		Percent: 0,

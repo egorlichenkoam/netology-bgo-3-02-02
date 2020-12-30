@@ -17,7 +17,7 @@ func TestService_Card2Card(t *testing.T) {
 		amount money.Money
 	}
 
-	cardSvc := card.NewService()
+	cardSvc := card.NewService("510621")
 	transactionSvc := transaction.NewService()
 	inBank := Commission{
 		Percent: 0,

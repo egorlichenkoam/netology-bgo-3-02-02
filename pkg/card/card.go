@@ -31,9 +31,9 @@ type Service struct {
 	Cards    []Card
 }
 
-func NewService() *Service {
+func NewService(issuerId string) *Service {
 	return &Service{
-		IssuerId: "510621",
+		IssuerId: issuerId,
 	}
 }
 
@@ -58,7 +58,7 @@ func (s *Service) ByNumber(number string) (card *Card) {
 }
 
 func (s *Service) isOurCard(number string) bool {
-	if strings.HasPrefix(number, "510621") {
+	if strings.HasPrefix(number, s.IssuerId) {
 		return true
 	}
 	return false
