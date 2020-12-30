@@ -71,7 +71,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_000_00,
-			wantError: ErrorNotEnoughMoney,
+			wantError: errNotEnoughMoney,
 		}, {
 			name: "Карта своего банка -> Карта чужого банка (денег достаточно)",
 			fields: fields{
@@ -83,7 +83,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 0,
-			wantError: ErrorCardNumberInvalid,
+			wantError: errCardNumberInvalid,
 		}, {
 			name: "Карта своего банка -> Карта чужого банка (денег недостаточно)",
 			fields: fields{
@@ -95,7 +95,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_100_00,
-			wantError: ErrorCardToNotFound,
+			wantError: errCardToNotFound,
 		}, {
 			name: "Карта чужого банка -> Карта своего банка",
 			fields: fields{
@@ -107,7 +107,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_000_00,
-			wantError: ErrorCardFromNotFound,
+			wantError: errCardFromNotFound,
 		}, {
 			name: "Карта чужого банка -> Карта чужого банка",
 			fields: fields{
@@ -119,7 +119,7 @@ func TestService_Card2Card(t *testing.T) {
 				amount: 20_000_00,
 			},
 			wantTotal: 20_300_00,
-			wantError: ErrorCardFromNotFound,
+			wantError: errCardFromNotFound,
 		},
 	}
 	for _, tt := range tests {

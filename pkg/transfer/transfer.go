@@ -8,10 +8,10 @@ import (
 )
 
 var (
-	ErrorNotEnoughMoney    = errors.New("not enough money")
-	ErrorCardFromNotFound  = errors.New("card 'from' not found")
-	ErrorCardToNotFound    = errors.New("card 'to' not found")
-	ErrorCardNumberInvalid = errors.New("card number invalid")
+	errNotEnoughMoney    = errors.New("not enough money")
+	errCardFromNotFound  = errors.New("card 'from' not found")
+	errCardToNotFound    = errors.New("card 'to' not found")
+	errCardNumberInvalid = errors.New("card number invalid")
 )
 
 type Commission struct {
@@ -41,18 +41,18 @@ func (s *Service) Card2Card(from, to string, amount money.Money) (total money.Mo
 	e = nil
 	total = 0
 	if !s.CardSvc.CheckByLuna(from) || !s.CardSvc.CheckByLuna(to) {
-		e = ErrorCardNumberInvalid
+		e = errCardNumberInvalid
 		return total, e
 	}
 	cardFrom := s.CardSvc.ByNumber(from)
 	cardTo := s.CardSvc.ByNumber(to)
 	total = s.total(amount, s.commission(cardFrom, cardTo))
 	if cardFrom == nil {
-		e = ErrorCardFromNotFound
+		e = errCardFromNotFound
 		return
 	}
 	if cardTo == nil {
-		e = ErrorCardToNotFound
+		e = errCardToNotFound
 		return
 	}
 	e = s.transfer(cardFrom, total, transaction.From)
@@ -89,7 +89,7 @@ func (s *Service) transfer(card *card.Card, amount money.Money, fromTo transacti
 			tx.Status = transaction.Ok
 		} else {
 			tx.Status = transaction.Fail
-			e = ErrorNotEnoughMoney
+			e = errNotEnoughMoney
 		}
 	} else if fromTo == transaction.To {
 		card.Balance += amount
